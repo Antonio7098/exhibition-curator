@@ -26,7 +26,7 @@ export interface ChicagoSearchParams {
   query?: string
 }
 
-export async function searchChicagoArtworks(params: ChicagoSearchParams = {}): Promise<{ data: Artwork[]; pagination: any; config: any }> {
+export async function searchChicagoArtworks(params: ChicagoSearchParams = {}): Promise<{ data: Artwork[]; pagination: { total_pages: number; current_page: number; total: number }; config: { iiif_url: string } }> {
   const { q = '', page = 1, limit = 20 } = params
   
   const searchParams = new URLSearchParams({

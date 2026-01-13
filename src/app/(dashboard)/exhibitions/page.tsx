@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { ArtworkDetail } from '@/components/artwork-detail'
 import { ExhibitionGrid } from '@/components/exhibition-grid'
 import { useExhibitionStore } from '@/lib/store'
-import { Trash2, Share2, Loader2 } from 'lucide-react'
+import { Trash2, Share2 } from 'lucide-react'
 import type { UnifiedArtwork } from '@/lib/museums'
 
 export default function ExhibitionsPage() {

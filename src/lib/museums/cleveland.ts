@@ -25,7 +25,7 @@ export interface ClevelandSearchParams {
   skip?: number
 }
 
-export async function searchClevelandArtworks(params: ClevelandSearchParams = {}): Promise<{ data: ClevelandArtwork[]; info: any }> {
+export async function searchClevelandArtworks(params: ClevelandSearchParams = {}): Promise<{ data: ClevelandArtwork[]; info: { total_count: number; skip: number; limit: number } }> {
   const { q = '', page = 1, limit = 20 } = params
   const skip = (page - 1) * limit
 
@@ -57,7 +57,7 @@ export async function getClevelandArtwork(id: number): Promise<ClevelandArtwork>
   return response.json()
 }
 
-export function getClevelandImageUrl(images: ClevelandArtwork['images'], size: 'full' | 'large' | 'medium' | 'small' = 'medium'): string {
+export function getClevelandImageUrl(images: ClevelandArtwork['images']): string {
   if (!images || images.length === 0) return '/placeholder-artwork.svg'
   const firstImage = images[0]
   if (!firstImage?.web?.url) return '/placeholder-artwork.svg'

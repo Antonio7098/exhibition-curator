@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Trash2, ExternalLink, MapPin, Calendar } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 import { useExhibitionStore } from '@/lib/store'
 import type { UnifiedArtwork } from '@/lib/museums'
 
@@ -28,13 +28,8 @@ export function ExhibitionGrid({ artworks, onRemove, onViewDetails }: Exhibition
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      {artworks.map((artwork) => {
-        const museumUrl = artwork.source === 'chicago'
-          ? `https://www.artic.edu/artworks/${artwork.originalId}`
-          : `https://www.clevelandart.org/art/${artwork.originalId}`
-
-        return (
-          <Card key={artwork.id} className="overflow-hidden group">
+      {artworks.map((artwork) => (
+        <Card key={artwork.id} className="overflow-hidden group">
             <div className="relative aspect-square bg-muted overflow-hidden">
               <Image
                 src={artwork.imageUrl}
@@ -75,8 +70,7 @@ export function ExhibitionGrid({ artworks, onRemove, onViewDetails }: Exhibition
               </div>
             </CardContent>
           </Card>
-        )
-      })}
+      ))}
     </div>
   )
 }

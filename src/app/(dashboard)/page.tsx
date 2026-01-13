@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ImageIcon, Palette, Building2, ArrowRight } from 'lucide-react'
+import { ImageIcon, Palette, ArrowRight } from 'lucide-react'
 import { useExhibitionStore } from '@/lib/store'
 
 export default function DashboardPage() {
@@ -68,7 +68,7 @@ export default function DashboardPage() {
               <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">2</div>
               <div>
                 <p className="font-medium">Add to Exhibition</p>
-                <p className="text-sm text-muted-foreground">Click "Add to Exhibition" on artworks you want to include</p>
+                <p className="text-sm text-muted-foreground">Click &quot;Add to Exhibition&quot; on artworks you want to include</p>
               </div>
             </div>
             <div className="flex items-center gap-4">

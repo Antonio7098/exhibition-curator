@@ -56,7 +56,7 @@ function transformClevelandArtwork(artwork: ClevelandArtwork): UnifiedArtwork {
     date: artwork.creation_date || 'Unknown Date',
     medium: artwork.medium || 'Unknown Medium',
     dimensions: artwork.dimensions || 'Unknown Dimensions',
-    imageUrl: artwork.images ? getClevelandImageUrl(artwork.images, 'medium') : '/placeholder-artwork.svg',
+    imageUrl: artwork.images ? getClevelandImageUrl(artwork.images) : '/placeholder-artwork.svg',
     department: artwork.department_title || '',
     classification: artwork.type || '',
     culture: artwork.culture || '',

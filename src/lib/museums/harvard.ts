@@ -33,7 +33,7 @@ export interface HarvardSearchParams {
   department?: string
 }
 
-export async function searchHarvardArtworks(params: HarvardSearchParams = {}): Promise<{ records: HarvardArtwork[]; pagination: any }> {
+export async function searchHarvardArtworks(params: HarvardSearchParams = {}): Promise<{ records: HarvardArtwork[]; pagination: { total: number; page: number; size: number } }> {
   const { q = '', page = 1, size = 20, sort = 'rank', sortorder = 'desc' } = params
   
   const searchParams = new URLSearchParams({

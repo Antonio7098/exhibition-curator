@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import { CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Plus, Check, Eye, ExternalLink } from 'lucide-react'
+import { Plus, Check, Eye } from 'lucide-react'
 import type { UnifiedArtwork } from '@/lib/museums'
 import { useExhibitionStore } from '@/lib/store'
 

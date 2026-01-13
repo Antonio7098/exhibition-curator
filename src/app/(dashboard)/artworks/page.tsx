@@ -5,11 +5,10 @@ import { Button } from '@/components/ui/button'
 import { SearchBar } from '@/components/search-bar'
 import { ArtworkCard } from '@/components/artwork-card'
 import { ArtworkDetail } from '@/components/artwork-detail'
-import { ExhibitionList } from '@/components/exhibition-grid'
 import { searchArtworks } from '@/lib/museums'
 import { useExhibitionStore } from '@/lib/store'
 import type { UnifiedArtwork } from '@/lib/museums'
-import { Plus, LayoutGrid, List, Loader2 } from 'lucide-react'
+import { LayoutGrid, List, Loader2 } from 'lucide-react'
 
 export default function ArtworksPage() {
   const [artworks, setArtworks] = useState<UnifiedArtwork[]>([])
@@ -22,7 +21,7 @@ export default function ArtworksPage() {
   const handleSearch = useCallback(async (query: string, museum: string, sortBy: string) => {
     setLoading(true)
     try {
-      const result = await searchArtworks({ query, museum, sortBy: sortBy as any, limit: 24 })
+      const result = await searchArtworks({ query, museum: museum as 'all' | 'chicago' | 'cleveland', sortBy: sortBy as 'relevance' | 'date_asc' | 'date_desc' | 'title', limit: 24 })
       setArtworks(result.artworks)
     } catch (error) {
       console.error('Search failed:', error)
