@@ -1,7 +1,10 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export const runtime = 'nodejs'
+// Polyfill for Edge Runtime to prevent Supabase/Realtime crashes
+if (!process.versions) {
+  Object.assign(process, { versions: { node: '18.0.0' } })
+}
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
