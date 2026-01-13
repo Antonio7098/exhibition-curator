@@ -1,8 +1,8 @@
 // Polyfill for Edge Runtime to prevent Supabase/Realtime crashes
 // This needs to be imported before any Supabase clients
 if (typeof process === 'undefined') {
-  // @ts-ignore
-  globalThis.process = { env: {} }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (globalThis as any).process = { env: {} }
 }
 
 if (!process.version) {
