@@ -37,15 +37,21 @@ export async function middleware(request: NextRequest) {
   const { data: { session } } = await supabase.auth.getSession()
 
   const isLoginPage = request.nextUrl.pathname === '/login'
-  const isDashboardPage = request.nextUrl.pathname.startsWith('/') && 
-                          request.nextUrl.pathname !== '/login'
+  const isRootPage = request.nextUrl.pathname === '/'
+  const isProtectedRoute = request.nextUrl.pathname.startsWith('/artworks') ||
+                           request.nextUrl.pathname.startsWith('/exhibitions') ||
+                           request.nextUrl.pathname.startsWith('/settings')
 
-  // Redirect to login if not authenticated and trying to access dashboard
-  if (!session && isDashboardPage && !isLoginPage) {
+  if (isRootPage) {
+    return response
+  }
+
+  // Redirect to login if not authenticated and trying to access protected routes
+  if (!session && isProtectedRoute) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  // Redirect to dashboard if authenticated and on login page
+  // Redirect to artworks if authenticated and on login page
   if (session && isLoginPage) {
     return NextResponse.redirect(new URL('/artworks', request.url))
   }
