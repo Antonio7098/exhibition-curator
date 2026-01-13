@@ -47,7 +47,7 @@ export async function middleware(request: NextRequest) {
 
   // Redirect to dashboard if authenticated and on login page
   if (session && isLoginPage) {
-    return NextResponse.redirect(new URL('/', request.url))
+    return NextResponse.redirect(new URL('/artworks', request.url))
   }
 
   return response
